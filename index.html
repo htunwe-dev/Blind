@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            /* Center the stack-container on the page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flicker {
+            animation: flickerAnimation 0.1s infinite;
+        }
+        @keyframes flickerAnimation {
+            0% { background-color: white; }
+            50% { background-color: black; }
+            100% { background-color: white; }
+        }
+
+        /* The container that holds both headers in the same spot */
+        .stack-container {
+            display: grid;
+            place-items: center; /* Centers both horizontally and vertically */
+        }
+
+        .stack-container h1 {
+            grid-area: 1 / 1; /* Both elements occupy the same grid area (Row 1, Col 1) */
+            font-size: 80px;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+<body id="body" class="flicker" onclick="toggleFullScreen()">
+    <script>
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
+
+    <div class="stack-container">
+        <h1 style="color:white;">Stare for 1 minute and you'll be blind</h1>
+        <h1 style="color:black;">Stare for 1 minute and you'll be blind</h1>
+    </div>
+
+</body>
+</html>
